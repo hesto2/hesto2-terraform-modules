@@ -10,6 +10,7 @@ resource "aws_lambda_function" "lambda" {
   environment {
     variables = var.lambda_environment_variables
   }
+  source_code_hash = filebase64sha256("deploy.zip")
 }
 
 resource "aws_iam_role" "lambda_exec" {
