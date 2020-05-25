@@ -10,7 +10,7 @@ jobs:
           command: yarn
       - run:
           name: Publish package
-          command: sh ../node_modules/.bin/npm-publish
+          command: sh ./node_modules/.bin/npm-publish
 
 workflows:
   version: 2
