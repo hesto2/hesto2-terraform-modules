@@ -12,3 +12,6 @@ output "role_arn" {
 output "role_id" {
   value = "${aws_iam_role.lambda_exec.id}"
 }
+output "role_name" {
+  value = "${aws_iam_role.lambda_exec.name}"
+}
