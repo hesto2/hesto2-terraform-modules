@@ -8,6 +8,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@hesto2/config": "^0.0.15"
+    "@hesto2/config": "^0.0.28"
   }
 }
