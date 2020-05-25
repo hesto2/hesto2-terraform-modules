@@ -6,6 +6,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install dependencies
+          command: yarn
+      - run:
           name: Publish package
           command: sh ../node_modules/.bin/npm-publish
 
