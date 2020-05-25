@@ -27,5 +27,7 @@ variable "lambda_environment_variables" {
   type = map
 }
 
-
-
+variable "lambda_handler" {
+  type = string
+  default = "index.handler"
+}
