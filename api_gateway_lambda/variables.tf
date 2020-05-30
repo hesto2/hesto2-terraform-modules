@@ -2,10 +2,6 @@ variable "domain_name" {
   type = string
 }
 
-variable "app_name" {
-  type = string
-}
-
 variable "regional_certificate_arn" {
   type = string
 }
@@ -19,15 +15,26 @@ variable "apigateway_stage_name" {
   default = "v1"
 }
 
+variable "app_name" {
+  type = string
+}
+
 variable "filename" {
   type = string
+  default = "deploy.zip"
 }
 
 variable "lambda_environment_variables" {
   type = map
+  default = {}
 }
 
-variable "lambda_handler" {
+variable "log_retention_days" {
+  type = number
+  default = 7
+}
+
+variable "handler" {
   type = string
   default = "index.handler"
 }

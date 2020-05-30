@@ -4,13 +4,13 @@ module "lambda" {
   filename = "${var.filename}"
   lambda_environment_variables = "${var.lambda_environment_variables}"
   log_retention_days = "${var.log_retention_days}"
-  handler="${var.lambda_handler}"
+  handler="${var.handler}"
 }
 
  resource "aws_lambda_permission" "apigw" {
    statement_id  = "AllowAPIGatewayInvoke"
    action        = "lambda:InvokeFunction"
-   function_name = "${lambda.function_name}"
+   function_name = "${module.lambda.function_name}"
    principal     = "apigateway.amazonaws.com"
 
    # The "/*/*" portion grants access from any method on any resource
