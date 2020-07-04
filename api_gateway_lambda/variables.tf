@@ -24,6 +24,15 @@ variable "filename" {
   default = "deploy.zip"
 }
 
+variable "s3_bucket" {
+  type = string
+  default = null
+}
+variable "s3_key" {
+  type = string
+  default = null
+}
+
 variable "lambda_environment_variables" {
   type = map
   default = {}

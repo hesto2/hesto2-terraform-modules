@@ -6,7 +6,6 @@ variable "filename" {
   type = string
   default = "deploy.zip"
 }
-
 variable "lambda_environment_variables" {
   type = map
   default = {}
@@ -22,5 +21,13 @@ variable "handler" {
   default = "index.handler"
 }
 
+variable "s3_bucket" {
+  type = string
+  default = null
+}
+variable "s3_key" {
+  type = string
+  default = null
+}
 
 

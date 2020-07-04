@@ -1,7 +1,9 @@
 resource "aws_lambda_function" "lambda" {
   function_name = "${var.app_name}"
   filename = "${var.filename}"
-  handler = "index.handler"
+  s3_bucket = "${var.s3_bucket}"
+  s3_key = "${var.s3_key}"
+  handler = "${var.handler}"
   runtime = "nodejs12.x"
   timeout = 29
   memory_size = 1280
@@ -31,22 +33,25 @@ resource "aws_iam_role" "lambda_exec" {
 EOF
 }
 
- resource "aws_cloudwatch_log_group" "lambda_log_group" {
-  name = "${var.app_name}/lambda"
-  retention_in_days = "${var.log_retention_days}"
-}
+ resource "aws_cloudwatch_log_group" "lambda_log_group" {	
+  name              = "/aws/lambda/${var.app_name}"	
+  retention_in_days = 14	
+}	
 
-# See also the following AWS managed policy: AWSLambdaBasicExecutionRole
+# See also the following AWS managed policy: AWSLambdaBasicExecutionRole	
 resource "aws_iam_policy" "lambda_logging" {
+  path        = "/"
+  description = "IAM policy for logging from a lambda"
   policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
-    {
-      "Action": [
+    {	
+      "Action": [	
+        "logs:CreateLogGroup",
         "logs:CreateLogStream",
         "logs:PutLogEvents"
-      ],
+      ],	
       "Resource": "arn:aws:logs:*:*:*",
       "Effect": "Allow"
     }
