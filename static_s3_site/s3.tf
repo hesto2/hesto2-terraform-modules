@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "site" {
-  bucket = "${var.site_domain_name}"
+  bucket = var.site_domain_name
   acl    = "public-read"
 
   website {
@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "site" {
 }
 
 resource "aws_s3_bucket_policy" "site" {
-  bucket = "${aws_s3_bucket.site.id}"
+  bucket = aws_s3_bucket.site.id
   policy = <<EOF
 {
     "Version": "2012-10-17",

@@ -3,31 +3,30 @@ variable "app_name" {
 }
 
 variable "filename" {
-  type = string
+  type    = string
   default = "deploy.zip"
 }
 variable "lambda_environment_variables" {
-  type = map
+  type    = map
   default = {}
 }
 
 variable "log_retention_days" {
-  type = number
+  type    = number
   default = 7
 }
 
 variable "handler" {
-  type = string
+  type    = string
   default = "index.handler"
 }
 
 variable "s3_bucket" {
-  type = string
+  type    = string
   default = null
 }
+
 variable "s3_key" {
-  type = string
+  type    = string
   default = null
 }
-
-

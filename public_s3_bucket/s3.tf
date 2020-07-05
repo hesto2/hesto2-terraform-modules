@@ -1,10 +1,10 @@
 resource "aws_s3_bucket" "public_bucket" {
-  bucket = "${var.bucket_name}"
+  bucket = var.bucket_name
   acl    = "public-read"
 }
 
 resource "aws_s3_bucket_policy" "public_bucket" {
-  bucket = "${aws_s3_bucket.public_bucket.id}"
+  bucket = aws_s3_bucket.public_bucket.id
   policy = <<EOF
 {
     "Version": "2012-10-17",
