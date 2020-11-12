@@ -53,6 +53,13 @@ output "base_url" {
   value = "${aws_api_gateway_deployment.main.invoke_url}"
 }
 
+
+
+resource "aws_api_gateway_account" "account" {
+  cloudwatch_role_arn = "${aws_iam_role.cloudwatch.arn}"
+}
+
+# Setup logging
 # Setup logging
 resource "aws_iam_role" "cloudwatch" {
   name = "${var.app_name}_cloudwatch_role"
