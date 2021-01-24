@@ -1,6 +1,7 @@
 resource "aws_cloudwatch_event_rule" "timed_rule" {
   description         = "Fires every thirty minutes during business hours"
   schedule_expression = var.schedule_expression
+  is_enabled = var.is_enabled
 }
 
 resource "aws_cloudwatch_event_target" "check_timed_rule" {

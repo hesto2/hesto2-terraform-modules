@@ -26,5 +26,10 @@ variable "handler" {
   default = "index.handler"
 }
 
+variable "is_enabled" {
+  type = bool
+  default = true
+}
+
 
 
