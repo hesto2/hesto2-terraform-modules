@@ -5,4 +5,6 @@ module "lambda" {
   log_retention_days           = var.log_retention_days
   filename                     = var.filename
   handler                      = var.handler
+  s3_bucket                    = var.s3_bucket
+  s3_key                       = var.s3_ke
 }

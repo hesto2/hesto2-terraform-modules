@@ -31,5 +31,14 @@ variable "is_enabled" {
   default = true
 }
 
+variable "s3_bucket" {
+  type    = string
+  default = null
+}
+variable "s3_key" {
+  type    = string
+  default = null
+}
+
 
 
