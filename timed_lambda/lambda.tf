@@ -6,5 +6,5 @@ module "lambda" {
   filename                     = var.filename
   handler                      = var.handler
   s3_bucket                    = var.s3_bucket
-  s3_key                       = var.s3_ke
+  s3_key                       = var.s3_key
 }
