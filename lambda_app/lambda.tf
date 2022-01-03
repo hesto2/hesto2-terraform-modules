@@ -1,6 +1,6 @@
 resource "aws_lambda_function" "lambda" {
   function_name = var.app_name
-  filename      = var.filename
+  filename      = var.s3_key != null ? null : var.filename
   s3_bucket     = var.s3_bucket
   s3_key        = var.s3_key
   handler       = var.handler
