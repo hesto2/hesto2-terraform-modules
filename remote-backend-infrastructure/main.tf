@@ -1,7 +1,11 @@
 resource "aws_s3_bucket" "terraform_state" {
   bucket = var.s3_bucket_name
-  acl    = "private"
   tags   = { Name = "terraform-backend" }
+}
+
+resource "aws_s3_bucket_acl" "terraform_state" {
+  bucket = aws_s3_bucket.terraform_state.id
+  acl    = "private"
 }
 resource "aws_dynamodb_table" "terraform_state_lock" {
   name           = var.dynamodb_table_name

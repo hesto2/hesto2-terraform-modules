@@ -1,5 +1,9 @@
 resource "aws_s3_bucket" "public_bucket" {
   bucket = var.bucket_name
+}
+
+resource "aws_s3_bucket_acl" "public_bucket" {
+  bucket = aws_s3_bucket.public_bucket.id
   acl    = "public-read"
 }
 
