@@ -3,8 +3,9 @@ resource "aws_s3_bucket" "site" {
 }
 
 resource "aws_s3_bucket_acl" "site" {
-  bucket = aws_s3_bucket.site.id
-  acl    = "public-read"
+  bucket     = aws_s3_bucket.site.id
+  acl        = "public-read"
+  depends_on = [aws_s3_bucket_ownership_controls.site]
 }
 
 resource "aws_s3_bucket_website_configuration" "site" {
@@ -18,9 +19,26 @@ resource "aws_s3_bucket_website_configuration" "site" {
   }
 }
 
-resource "aws_s3_bucket_policy" "site" {
+resource "aws_s3_bucket_public_access_block" "site" {
   bucket = aws_s3_bucket.site.id
-  policy = <<EOF
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+resource "aws_s3_bucket_ownership_controls" "site" {
+  bucket = aws_s3_bucket.site.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+  depends_on = [aws_s3_bucket_public_access_block.site]
+}
+
+resource "aws_s3_bucket_policy" "site" {
+  bucket     = aws_s3_bucket.site.id
+  policy     = <<EOF
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -34,4 +52,5 @@ resource "aws_s3_bucket_policy" "site" {
     ]
 }
 EOF
+  depends_on = [aws_s3_bucket_public_access_block.site]
 }
