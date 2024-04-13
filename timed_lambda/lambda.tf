@@ -7,4 +7,5 @@ module "lambda" {
   handler                      = var.handler
   s3_bucket                    = var.s3_bucket
   s3_key                       = var.s3_key
+  runtime                      = var.runtime
 }

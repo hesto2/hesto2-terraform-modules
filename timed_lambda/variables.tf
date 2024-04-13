@@ -12,7 +12,7 @@ variable "filename" {
 }
 
 variable "lambda_environment_variables" {
-  type    = map
+  type    = map(any)
   default = {}
 }
 
@@ -27,7 +27,7 @@ variable "handler" {
 }
 
 variable "is_enabled" {
-  type = bool
+  type    = bool
   default = true
 }
 
@@ -40,5 +40,8 @@ variable "s3_key" {
   default = null
 }
 
-
+variable "runtime" {
+  type    = string
+  default = "nodejs20.x"
+}
 

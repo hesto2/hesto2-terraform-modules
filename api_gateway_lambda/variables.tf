@@ -34,7 +34,7 @@ variable "s3_key" {
 }
 
 variable "lambda_environment_variables" {
-  type    = map
+  type    = map(any)
   default = {}
 }
 
@@ -46,4 +46,9 @@ variable "log_retention_days" {
 variable "handler" {
   type    = string
   default = "index.handler"
+}
+
+variable "runtime" {
+  type    = string
+  default = "nodejs20.x"
 }

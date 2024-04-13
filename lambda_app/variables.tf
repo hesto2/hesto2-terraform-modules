@@ -21,6 +21,11 @@ variable "handler" {
   default = "index.handler"
 }
 
+variable "runtime" {
+  type    = string
+  default = "nodejs20.x"
+}
+
 variable "s3_bucket" {
   type    = string
   default = null

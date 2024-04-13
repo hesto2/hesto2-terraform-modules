@@ -7,6 +7,7 @@ module "lambda" {
   lambda_environment_variables = var.lambda_environment_variables
   log_retention_days           = var.log_retention_days
   handler                      = var.handler
+  runtime                      = var.runtime
 }
 
 resource "aws_lambda_permission" "apigw" {
